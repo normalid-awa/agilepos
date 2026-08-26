@@ -1,0 +1,16 @@
+{
+	"name": "@agilepos",
+	"description": "",
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"workspaces": [
+		"apps/backend",
+		"apps/user-frontend",
+		"apps/admin-frontend",
+		"packages/common"
+	],
+	"dependencies": {
+		"typescript": "^7.0.2"
+	}
+}
