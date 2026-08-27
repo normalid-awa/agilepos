@@ -39,6 +39,7 @@ export interface IPickOption {
 	type: "pick";
 	name: string;
 	description?: string;
+	required: boolean;
 	choices: OptionChoice[];
 }
 
@@ -99,6 +100,7 @@ export const TestDrinkOption: IPickOption = {
 	uuid: "ddfqw132t",
 	name: "Choose drink",
 	type: "pick",
+	required: false,
 	choices: [
 		{
 			type: "preference",
