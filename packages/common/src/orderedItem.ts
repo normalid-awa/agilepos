@@ -1,9 +1,4 @@
-import { inspect } from "node:util";
 import {
-	TestCokeItem,
-	TestDrinkOption,
-	TestEggFriedRiceItem,
-	TestOptionDrinkSet,
 	type IMultipleChoiceOption,
 	type IOptionSet,
 	type IPickOption,
@@ -89,41 +84,3 @@ export interface IPreferenceChoiceValue {
 }
 
 export type OptionChoicesValue = IItemChoiceValue | IPreferenceChoiceValue;
-
-const TestCokeOrder: IOrderedItem = {
-	uuid: "cvwef2341",
-	item: TestCokeItem.uuid,
-	name: "Coke",
-	price: 123,
-	optionSetsValue: [],
-};
-
-const TestOrder: IOrderedItem = {
-	uuid: "14e2d23f",
-	item: TestEggFriedRiceItem.uuid,
-	name: TestEggFriedRiceItem.name,
-	price: TestEggFriedRiceItem.price,
-	optionSetsValue: [
-		{
-			uuid: "c2weojij1j90",
-			optionSet: TestOptionDrinkSet.uuid,
-			name: TestOptionDrinkSet.name,
-			values: [
-				{
-					uuid: "ff1h92843",
-					type: "pick",
-					option: TestDrinkOption.uuid,
-					name: TestDrinkOption.name,
-					description: TestDrinkOption.description!,
-					value: {
-						type: "item",
-						value: TestCokeOrder,
-						price: 6,
-					},
-				},
-			],
-		},
-	],
-};
-
-console.log(inspect(TestOrder, true, null, true));
