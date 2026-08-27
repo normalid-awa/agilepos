@@ -1,27 +1,20 @@
+import type { HasDescription } from "./hasDescription.js";
 import type { IOrderableItem } from "./orderableItem.js";
 
-/**
- * 	could mixed with `IHasImages`
- */
-export interface ICoupon {
+export interface ICoupon extends HasDescription<{
 	uuid: string;
 	name: string;
-	description?: string;
 	maximumUse: number;
 	expirationDate: Date;
 	useCondition: CouponCondition[];
 	properties: CouponProperty;
-}
+}> {}
 
-/**
- * 	could mixed with `IHasImages`
- */
-export interface IUsedCoupon {
+export interface IUsedCoupon extends HasDescription<{
 	uuid: string;
 	name: string;
-	description?: string;
 	properties: CouponProperty;
-}
+}> {}
 
 export type CouponProperty =
 	| {

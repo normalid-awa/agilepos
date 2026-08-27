@@ -1,64 +1,61 @@
+import type { HasDescription } from "./hasDescription.js";
+import type { HasImages } from "./hasImage.js";
+
 /**
  *	An interface represent an item that could be ordered by user,
- *	could mixed with `IHasImages`
  */
-export interface IOrderableItem {
-	uuid: string;
-	name: string;
-	description?: string;
-	price: number;
-	optionSets?: IOptionSet[];
-	hidden?: boolean;
-}
+export interface IOrderableItem extends HasDescription<
+	HasImages<{
+		uuid: string;
+		name: string;
+		price: number;
+		optionSets?: IOptionSet[];
+		hidden?: boolean;
+	}>
+> {}
 
-/**
- * 	could mixed with `IHasImages`
- */
-export interface IOptionSet {
-	uuid: string;
-	name: string;
-	description?: string;
-	options: Option[];
-}
+export interface IOptionSet extends HasDescription<
+	HasImages<{
+		uuid: string;
+		name: string;
+		options: Option[];
+	}>
+> {}
 
 //#region Options type
-export interface IMultipleChoiceOption {
+export interface IMultipleChoiceOption extends HasDescription<{
 	uuid: string;
 	type: "multiple-choice";
 	name: string;
-	description?: string;
 	min?: number;
 	max?: number;
 	choices: OptionChoice[];
-}
+}> {}
 
-export interface IPickOption {
+export interface IPickOption extends HasDescription<{
 	uuid: string;
 	type: "pick";
 	name: string;
-	description?: string;
 	required: boolean;
 	choices: OptionChoice[];
-}
+}> {}
 
-export interface IQuantityOption {
+export interface IQuantityOption extends HasDescription<{
 	uuid: string;
 	type: "quantity";
 	name: string;
-	description?: string;
 	min?: number;
 	max?: number;
 	/* default min */
 	default?: number;
-}
+}> {}
 
-export interface ITextOption {
+export interface ITextOption extends HasDescription<{
 	uuid: string;
 	type: "text";
 	name: string;
-	description?: string;
 	max?: number;
-}
+}> {}
 //#endregion
 
 export type Option =
@@ -73,11 +70,10 @@ export interface IItemChoice {
 	price: number;
 }
 
-export interface IPreferenceChoice {
+export interface IPreferenceChoice extends HasDescription<{
 	type: "preference";
 	name: string;
-	description?: string;
 	price: number;
-}
+}> {}
 
 type OptionChoice = IItemChoice | IPreferenceChoice;

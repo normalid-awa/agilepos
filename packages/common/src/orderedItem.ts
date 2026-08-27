@@ -1,6 +1,9 @@
+import type { HasDescription } from "./hasDescription.js";
+import type { HasImages } from "./hasImage.js";
 import {
 	type IMultipleChoiceOption,
 	type IOptionSet,
+	type IOrderableItem,
 	type IPickOption,
 	type IQuantityOption,
 	type ITextOption,
@@ -11,58 +14,55 @@ import type { Ref } from "./utils.js";
 
 /**
  * An interface represent an item that order by user
- * could mixed with `IHasImages`
  */
-export interface IOrderedItem {
+export interface IOrderedItem extends HasImages<{
 	uuid: string;
-	item: Ref<IOrderedItem, "uuid">;
+	item: IOrderableItem;
 	name: string;
 	price: number;
 	optionSetsValue: IOptionSetValue[];
-}
+}> {}
 
-export interface IOptionSetValue {
-	uuid: string;
-	optionSet: Ref<IOptionSet, "uuid">;
-	name: string;
-	values: OptionValue[];
-}
+export interface IOptionSetValue extends HasDescription<
+	HasImages<{
+		uuid: string;
+		optionSet: Ref<IOptionSet, "uuid">;
+		name: string;
+		values: OptionValue[];
+	}>
+> {}
 
-export interface IMultipleChoiceOptionValue {
+export interface IMultipleChoiceOptionValue extends HasDescription<{
 	uuid: string;
 	type: "multiple-choice";
 	option: Ref<IMultipleChoiceOption, "uuid">;
 	name: string;
-	description?: string;
 	values: OptionChoicesValue[];
-}
+}> {}
 
-export interface IPickOptionValue {
+export interface IPickOptionValue extends HasDescription<{
 	uuid: string;
 	type: "pick";
 	option: Ref<IPickOption, "uuid">;
 	name: string;
-	description?: string;
 	value: OptionChoicesValue;
-}
+}> {}
 
-export interface IQuantityOptionValue {
+export interface IQuantityOptionValue extends HasDescription<{
 	uuid: string;
 	type: "quantity";
 	option: Ref<IQuantityOption, "uuid">;
 	name: string;
-	description?: string;
 	value: number;
-}
+}> {}
 
-export interface ITextOptionValue {
+export interface ITextOptionValue extends HasDescription<{
 	uuid: string;
 	type: "text";
 	option: Ref<ITextOption, "uuid">;
 	name: string;
-	description?: string;
 	value: string;
-}
+}> {}
 
 export type OptionValue =
 	| IMultipleChoiceOptionValue
@@ -76,11 +76,10 @@ export interface IItemChoiceValue {
 	price: number;
 }
 
-export interface IPreferenceChoiceValue {
+export interface IPreferenceChoiceValue extends HasDescription<{
 	type: "preference";
 	name: string;
-	description?: string;
 	price: number;
-}
+}> {}
 
 export type OptionChoicesValue = IItemChoiceValue | IPreferenceChoiceValue;
