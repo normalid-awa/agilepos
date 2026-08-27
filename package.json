@@ -10,7 +10,8 @@
 		"apps/admin-frontend",
 		"packages/common"
 	],
-	"dependencies": {
-		"typescript": "^7.0.2"
+	"devDependencies": {
+		"typescript": "^7.0.2",
+		"@types/node": "^26.4.0"
 	}
 }
