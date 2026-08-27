@@ -1,22 +1,24 @@
 import { inspect } from "node:util";
+import type { IHasDescription } from "./hasDescription.js";
 
 /**
-	An`interface represent an item that could be ordered by usser,
-	could mixed with `IHasImages`
-*/
+ *	An`interface represent an item that could be ordered by usser,
+ *	could mixed with `IHasImages`, `IHasDescription`
+ */
 export interface IItem {
 	uuid: string;
 	name: string;
-	description?: string;
 	price: number;
 	optionSets?: IOptionSet[];
 }
 
+/**
+ * 	could mixed with `IHasImages`, `IHasDescription`
+ */
 export interface IOptionSet {
 	uuid: string;
 	/** Shown to admin only  */
 	name: string;
-	description?: string;
 	options: Option[];
 }
 
@@ -104,7 +106,7 @@ const TestOptionDrinkSet: IOptionSet = {
 	],
 };
 
-const TestEggFriedRiceItem: IItem = {
+const TestEggFriedRiceItem: IItem & IHasDescription = {
 	uuid: "1",
 	name: "Egg Fried Rice",
 	description: "With egg",
