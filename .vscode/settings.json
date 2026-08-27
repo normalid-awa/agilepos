@@ -1,5 +1,6 @@
 {
     "conventionalCommits.scopes": [
-        "pkg/common"
+        "pkg/common",
+        "apps/backend"
     ]
 }
