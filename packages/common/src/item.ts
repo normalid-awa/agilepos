@@ -12,14 +12,6 @@ export interface IItem {
 	optionSets?: IOptionSet[];
 }
 
-export interface IHasImages {
-	imagesUrl: string[];
-}
-
-export function hasImages(obj: object): obj is IHasImages {
-	return "imagesUrl" in obj;
-}
-
 export interface IOptionSet {
 	uuid: string;
 	/** Shown to admin only  */
