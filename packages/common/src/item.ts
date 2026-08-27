@@ -10,7 +10,7 @@ export interface IItem {
 	name: string;
 	price: number;
 	optionSets?: IOptionSet[];
-	hidden: boolean;
+	hidden?: boolean;
 }
 
 /**
