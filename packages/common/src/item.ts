@@ -1,3 +1,5 @@
+import { inspect } from "node:util";
+
 /**
 	An`interface represent an item that could be ordered by usser,
 	could mixed with `IHasImages`
@@ -118,4 +120,4 @@ const TestEggFriedRiceItem: IItem = {
 	optionSets: [TestOptionDrinkSet],
 };
 
-console.log(TestEggFriedRiceItem);
+console.log(inspect(TestEggFriedRiceItem, true, null, true));
