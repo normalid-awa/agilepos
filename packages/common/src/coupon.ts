@@ -12,6 +12,15 @@ export interface ICoupon {
 	properties: CouponProperty;
 }
 
+/**
+ * 	could mixed with `IHasImages`, `IHasDescription`
+ */
+export interface IUsedCoupon {
+	uuid: string;
+	name: string;
+	properties: CouponProperty;
+}
+
 export type CouponProperty =
 	| {
 			type: "discount-precentage";
