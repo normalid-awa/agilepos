@@ -1,7 +1,7 @@
 import type { ICoupon } from "./coupon.js";
-import type { IOderableItem } from "./orderableItem.js";
+import type { IOrderableItem } from "./orderableItem.js";
 
 export interface IShoppingCart {
-	items: IOderableItem[];
+	items: IOrderableItem[];
 	coupon: ICoupon[];
 }

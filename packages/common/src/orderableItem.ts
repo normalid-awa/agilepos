@@ -2,10 +2,10 @@ import { inspect } from "node:util";
 import type { IHasDescription } from "./hasDescription.js";
 
 /**
- *	An`interface represent an item that could be ordered by usser,
+ *	An interface represent an item that could be ordered by user,
  *	could mixed with `IHasImages`, `IHasDescription`
  */
-export interface IOderableItem {
+export interface IOrderableItem {
 	uuid: string;
 	name: string;
 	price: number;
@@ -23,96 +23,113 @@ export interface IOptionSet {
 	options: Option[];
 }
 
-type Option =
-	| {
-			type: "multiple-choice";
-			name: string;
-			description?: string;
-			min?: number;
-			max?: number;
-			choices: OptionChoices;
-	  }
-	| {
-			type: "pick";
-			name: string;
-			description?: string;
-			choices: OptionChoices;
-	  }
-	| {
-			type: "quantities";
-			name: string;
-			description?: string;
-			min?: number;
-			max?: number;
-			/* default min */
-			default?: number;
-	  }
-	| {
-			type: "text";
-			name: string;
-			description?: string;
-			max?: number;
-	  };
+//#region Options type
+export interface IMultipleChoiceOption {
+	uuid: string;
+	type: "multiple-choice";
+	name: string;
+	description?: string;
+	min?: number;
+	max?: number;
+	choices: OptionChoice[];
+}
 
-type OptionChoices =
-	| {
-			type: "item";
-			choices: {
-				item: IOderableItem;
-				price: number;
-			}[];
-	  }
-	| {
-			type: "preference";
-			choices: {
-				name: string;
-				description?: string;
-				price: number;
-			}[];
-	  };
+export interface IPickOption {
+	uuid: string;
+	type: "pick";
+	name: string;
+	description?: string;
+	choices: OptionChoice[];
+}
 
-const TestCokeItem: IOderableItem = {
+export interface IQuantityOption {
+	uuid: string;
+	type: "quantity";
+	name: string;
+	description?: string;
+	min?: number;
+	max?: number;
+	/* default min */
+	default?: number;
+}
+
+export interface ITextOption {
+	uuid: string;
+	type: "text";
+	name: string;
+	description?: string;
+	max?: number;
+}
+//#endregion
+
+export type Option =
+	| IMultipleChoiceOption
+	| IPickOption
+	| IQuantityOption
+	| ITextOption;
+
+export interface IItemChoice {
+	type: "item";
+	item: IOrderableItem;
+	price: number;
+}
+
+export interface IPreferenceChoice {
+	type: "preference";
+	name: string;
+	description?: string;
+	price: number;
+}
+
+type OptionChoice = IItemChoice | IPreferenceChoice;
+
+export const TestCokeItem: IOrderableItem = {
 	uuid: "2",
 	name: "Coke",
 	price: 12,
 };
 
-const TestHoyCokeItem: IOderableItem = {
+export const TestHotChocoletteItem: IOrderableItem = {
 	uuid: "3",
-	name: "HotCoke",
+	name: "Hot Chocolatte",
 	price: 6,
 };
 
-const TestOptionDrinkSet: IOptionSet = {
-	uuid: "1",
-	name: "Drinks",
-	options: [
+export const TestDrinkOption: IPickOption = {
+	uuid: "ddfqw132t",
+	name: "Choose drink",
+	type: "pick",
+	choices: [
 		{
-			name: "Choose drink",
-			type: "pick",
-			choices: {
-				type: "item",
-				choices: [
-					{
-						item: TestCokeItem,
-						price: 6,
-					},
-					{
-						item: TestHoyCokeItem,
-						price: 3,
-					},
-				],
-			},
+			type: "preference",
+			name: "No",
+			price: 0,
+		},
+		{
+			type: "item",
+			item: TestCokeItem,
+			price: 6,
+		},
+		{
+			type: "item",
+			item: TestHotChocoletteItem,
+			price: 3,
 		},
 	],
 };
 
-const TestEggFriedRiceItem: IOderableItem & IHasDescription = {
+export const TestOptionDrinkSet: IOptionSet = {
+	uuid: "1",
+	name: "Drinks",
+	options: [TestDrinkOption],
+};
+
+export const TestEggFriedRiceItem: IOrderableItem & IHasDescription = {
 	uuid: "1",
 	name: "Egg Fried Rice",
 	description: "With egg",
 	price: 60,
 	optionSets: [TestOptionDrinkSet],
-};
+} as const;
 
 console.log(inspect(TestEggFriedRiceItem, true, null, true));

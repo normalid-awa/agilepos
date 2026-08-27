@@ -1,12 +1,12 @@
 import type { ICoupon } from "./coupon.js";
-import type { IOderableItem } from "./orderableItem.js";
+import type { IOrderedItem } from "./orderedItem.js";
 
 /**
  * All data should be solidified
  */
 export interface IOrderHistory {
 	uuid: string;
-	items: IOderableItem[];
+	items: IOrderedItem[];
 	coupon: ICoupon[];
 	price: number;
 }
