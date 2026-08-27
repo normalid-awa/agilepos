@@ -1,11 +1,12 @@
 import type { IOrderableItem } from "./orderableItem.js";
 
 /**
- * 	could mixed with `IHasImages`, `IHasDescription`
+ * 	could mixed with `IHasImages`
  */
 export interface ICoupon {
 	uuid: string;
 	name: string;
+	description?: string;
 	maximumUse: number;
 	expirationDate: Date;
 	useCondition: CouponCondition[];
@@ -13,11 +14,12 @@ export interface ICoupon {
 }
 
 /**
- * 	could mixed with `IHasImages`, `IHasDescription`
+ * 	could mixed with `IHasImages`
  */
 export interface IUsedCoupon {
 	uuid: string;
 	name: string;
+	description?: string;
 	properties: CouponProperty;
 }
 

@@ -1,22 +1,23 @@
 /**
  *	An interface represent an item that could be ordered by user,
- *	could mixed with `IHasImages`, `IHasDescription`
+ *	could mixed with `IHasImages`
  */
 export interface IOrderableItem {
 	uuid: string;
 	name: string;
+	description?: string;
 	price: number;
 	optionSets?: IOptionSet[];
 	hidden?: boolean;
 }
 
 /**
- * 	could mixed with `IHasImages`, `IHasDescription`
+ * 	could mixed with `IHasImages`
  */
 export interface IOptionSet {
 	uuid: string;
-	/** Shown to admin only  */
 	name: string;
+	description?: string;
 	options: Option[];
 }
 

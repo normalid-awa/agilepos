@@ -1,5 +1,4 @@
 import { inspect } from "node:util";
-import type { IHasDescription } from "./hasDescription.js";
 import type {
 	IOptionSet,
 	IOrderableItem,
@@ -49,7 +48,7 @@ export const TestOptionDrinkSet: IOptionSet = {
 	options: [TestDrinkOption],
 };
 
-export const TestEggFriedRiceItem: IOrderableItem & IHasDescription = {
+export const TestEggFriedRiceItem: IOrderableItem = {
 	uuid: "1",
 	name: "Egg Fried Rice",
 	description: "With egg",
