@@ -1,4 +1,4 @@
-import type { IItem } from "./item.js";
+import type { IOderableItem } from "./orderableItem.js";
 
 /**
  * 	could mixed with `IHasImages`, `IHasDescription`
@@ -23,7 +23,7 @@ export type CouponProperty =
 	  }
 	| {
 			type: "gift";
-			item: IItem;
+			item: IOderableItem;
 	  }
 	| {
 			/**
@@ -58,7 +58,7 @@ export type CouponCondition =
 			 *  e.g.  [[a,b]] = a or b
 			 *  e.g.  [a,b] = a and b
 			 */
-			conditions: (IItem | IItem[])[];
+			conditions: (IOderableItem | IOderableItem[])[];
 	  }
 	| {
 			type: "minimum-price";

@@ -5,7 +5,7 @@ import type { IHasDescription } from "./hasDescription.js";
  *	An`interface represent an item that could be ordered by usser,
  *	could mixed with `IHasImages`, `IHasDescription`
  */
-export interface IItem {
+export interface IOderableItem {
 	uuid: string;
 	name: string;
 	price: number;
@@ -58,7 +58,7 @@ type OptionChoices =
 	| {
 			type: "item";
 			choices: {
-				item: IItem;
+				item: IOderableItem;
 				price: number;
 			}[];
 	  }
@@ -71,13 +71,13 @@ type OptionChoices =
 			}[];
 	  };
 
-const TestCokeItem: IItem = {
+const TestCokeItem: IOderableItem = {
 	uuid: "2",
 	name: "Coke",
 	price: 12,
 };
 
-const TestHoyCokeItem: IItem = {
+const TestHoyCokeItem: IOderableItem = {
 	uuid: "3",
 	name: "HotCoke",
 	price: 6,
@@ -107,7 +107,7 @@ const TestOptionDrinkSet: IOptionSet = {
 	],
 };
 
-const TestEggFriedRiceItem: IItem & IHasDescription = {
+const TestEggFriedRiceItem: IOderableItem & IHasDescription = {
 	uuid: "1",
 	name: "Egg Fried Rice",
 	description: "With egg",
