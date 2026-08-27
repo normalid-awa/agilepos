@@ -8,7 +8,7 @@ export interface ICoupon {
 	name: string;
 	maximumUse: number;
 	expirationDate: Date;
-	useCondition: CouponCondition;
+	useCondition: CouponCondition[];
 	properties: CouponProperty;
 }
 
@@ -24,6 +24,30 @@ export type CouponProperty =
 	| {
 			type: "gift";
 			item: IItem;
+	  }
+	| {
+			/**
+			 * Could not use with any coupon
+			 */
+			type: "exclusive";
+	  }
+	| {
+			/**
+			 * Could not use with certain coupon
+			 */
+			type: "coupon-conflict";
+			exclusive: ICoupon[];
+	  }
+	| {
+			/**
+			 * Could not use with certain coupon
+			 */
+			type: "coupon-conflict";
+			exclusive: ICoupon[];
+	  }
+	| {
+			type: "could-accumulate";
+			maxAccumulate: number;
 	  };
 
 export type CouponCondition =
