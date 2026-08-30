@@ -22,10 +22,17 @@ export interface IOptionSet extends HasDescription<
 	}>
 > {}
 
+export enum OptionType {
+	MC = "multiple-choice",
+	PICK = "pick",
+	QUANTITY = "quantity",
+	TEXT = "text",
+}
+
 //#region Options type
 export interface IMultipleChoiceOption extends HasDescription<{
 	uuid: string;
-	type: "multiple-choice";
+	type: OptionType.MC;
 	name: string;
 	min?: number;
 	max?: number;
@@ -34,7 +41,7 @@ export interface IMultipleChoiceOption extends HasDescription<{
 
 export interface IPickOption extends HasDescription<{
 	uuid: string;
-	type: "pick";
+	type: OptionType.PICK;
 	name: string;
 	required: boolean;
 	choices: OptionChoice[];
@@ -42,7 +49,7 @@ export interface IPickOption extends HasDescription<{
 
 export interface IQuantityOption extends HasDescription<{
 	uuid: string;
-	type: "quantity";
+	type: OptionType.QUANTITY;
 	name: string;
 	min?: number;
 	max?: number;
@@ -52,17 +59,14 @@ export interface IQuantityOption extends HasDescription<{
 
 export interface ITextOption extends HasDescription<{
 	uuid: string;
-	type: "text";
+	type: OptionType.TEXT;
 	name: string;
 	max?: number;
 }> {}
 //#endregion
 
 export type Option =
-	| IMultipleChoiceOption
-	| IPickOption
-	| IQuantityOption
-	| ITextOption;
+	IMultipleChoiceOption | IPickOption | IQuantityOption | ITextOption;
 
 export interface IItemChoice {
 	type: "item";
