@@ -68,14 +68,19 @@ export interface ITextOption extends HasDescription<{
 export type Option =
 	IMultipleChoiceOption | IPickOption | IQuantityOption | ITextOption;
 
+export enum OptionChoiceType {
+	ITEM = "item",
+	PREFERENCE = "preference",
+}
+
 export interface IItemChoice {
-	type: "item";
+	type: OptionChoiceType.ITEM;
 	item: IOrderableItem;
 	price: number;
 }
 
 export interface IPreferenceChoice extends HasDescription<{
-	type: "preference";
+	type: OptionChoiceType.PREFERENCE;
 	name: string;
 	price: number;
 }> {}

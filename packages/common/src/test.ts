@@ -1,5 +1,6 @@
 import { inspect } from "node:util";
 import {
+	OptionChoiceType,
 	OptionType,
 	type IOptionSet,
 	type IOrderableItem,
@@ -28,17 +29,17 @@ export const TestDrinkOption: IPickOption = {
 	required: false,
 	choices: [
 		{
-			type: "preference",
+			type: OptionChoiceType.PREFERENCE,
 			name: "No",
 			price: 0,
 		},
 		{
-			type: "item",
+			type: OptionChoiceType.ITEM,
 			item: TestCokeItem,
 			price: 6,
 		},
 		{
-			type: "item",
+			type: OptionChoiceType.ITEM,
 			item: TestHotChocoletteItem,
 			price: 3,
 		},
