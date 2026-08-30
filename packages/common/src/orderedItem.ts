@@ -1,6 +1,8 @@
 import type { HasDescription } from "./hasDescription.js";
 import type { HasImages } from "./hasImage.js";
 import {
+	OptionChoiceType,
+	OptionType,
 	type IMultipleChoiceOption,
 	type IOptionSet,
 	type IOrderableItem,
@@ -33,33 +35,29 @@ export interface IOptionSetValue extends HasDescription<
 > {}
 
 export interface IMultipleChoiceOptionValue extends HasDescription<{
-	uuid: string;
-	type: "multiple-choice";
-	option: Ref<IMultipleChoiceOption, "uuid">;
+	type: OptionType.MC;
+	option: IMultipleChoiceOption;
 	name: string;
 	values: OptionChoicesValue[];
 }> {}
 
 export interface IPickOptionValue extends HasDescription<{
-	uuid: string;
-	type: "pick";
-	option: Ref<IPickOption, "uuid">;
+	type: OptionType.PICK;
+	option: IPickOption;
 	name: string;
 	value: OptionChoicesValue;
 }> {}
 
 export interface IQuantityOptionValue extends HasDescription<{
-	uuid: string;
-	type: "quantity";
-	option: Ref<IQuantityOption, "uuid">;
+	type: OptionType.QUANTITY;
+	option: IQuantityOption;
 	name: string;
 	value: number;
 }> {}
 
 export interface ITextOptionValue extends HasDescription<{
-	uuid: string;
-	type: "text";
-	option: Ref<ITextOption, "uuid">;
+	type: OptionType.TEXT;
+	option: ITextOption;
 	name: string;
 	value: string;
 }> {}
@@ -71,13 +69,13 @@ export type OptionValue =
 	| ITextOptionValue;
 
 export interface IItemChoiceValue {
-	type: "item";
+	type: OptionChoiceType.ITEM;
 	value: IOrderedItem;
 	price: number;
 }
 
 export interface IPreferenceChoiceValue extends HasDescription<{
-	type: "preference";
+	type: OptionChoiceType.PREFERENCE;
 	name: string;
 	price: number;
 }> {}

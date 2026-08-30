@@ -1,20 +1,27 @@
 import type { HasDescription } from "./hasDescription.js";
+import type { HasImages } from "./hasImage.js";
 import type { IOrderableItem } from "./orderableItem.js";
 
-export interface ICoupon extends HasDescription<{
-	uuid: string;
-	name: string;
-	maximumUse: number;
-	expirationDate: Date;
-	useCondition: CouponCondition[];
-	properties: CouponProperty;
-}> {}
+//TODO: this need to be redesigna to support user ownership on coupon
 
-export interface IUsedCoupon extends HasDescription<{
-	uuid: string;
-	name: string;
-	properties: CouponProperty;
-}> {}
+export interface ICoupon extends HasImages<
+	HasDescription<{
+		uuid: string;
+		name: string;
+		maximumUse: number;
+		expirationDate: Date;
+		useCondition: CouponCondition[];
+		properties: CouponProperty[];
+	}>
+> {}
+
+export interface IUsedCoupon extends HasImages<
+	HasDescription<{
+		uuid: string;
+		name: string;
+		properties: CouponProperty[];
+	}>
+> {}
 
 export type CouponProperty =
 	| {
@@ -56,7 +63,7 @@ export type CouponProperty =
 
 export type CouponCondition =
 	| {
-			type: "item-quatity";
+			type: "item-combination";
 			/**
 			 *  e.g.  [[a,b], c] = (a or b) and c
 			 *  e.g.  [[a,b]] = a or b
