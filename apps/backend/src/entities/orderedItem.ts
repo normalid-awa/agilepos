@@ -10,6 +10,7 @@ import {
 import { OptionSet, OrderableItem } from "./orderableItem";
 import { ArrayType } from "@mikro-orm/core";
 import { OptionChoiceType, OptionType } from "@agilepos/common";
+import { Order } from "./order";
 
 @Entity()
 export class OrderedItem {
@@ -27,6 +28,9 @@ export class OrderedItem {
 
 	@Embedded({ object: true })
 	optionSetsValue!: OptionSetValue[];
+
+	@ManyToOne()
+	order!: Order;
 }
 
 @Embeddable()

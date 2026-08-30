@@ -4,11 +4,12 @@ import type { IPayment } from "./payment.js";
 import type { IUser } from "./user.js";
 
 export enum OrderStatus {
-	PLACED,
-	CONFIRMED,
-	PREPARING,
-	READY,
-	CANCELLED,
+	PLACED = "placed",
+	CONFIRMED = "confirmed",
+	PREPARING = "preparing",
+	READY = "ready",
+	TIMEDOUT = "timedout",
+	CANCELLED = "cancelled",
 }
 
 export interface IOrder {
