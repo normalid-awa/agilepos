@@ -31,7 +31,6 @@ export enum OptionType {
 
 //#region Options type
 export interface IMultipleChoiceOption extends HasDescription<{
-	uuid: string;
 	type: OptionType.MC;
 	name: string;
 	min?: number;
@@ -40,7 +39,6 @@ export interface IMultipleChoiceOption extends HasDescription<{
 }> {}
 
 export interface IPickOption extends HasDescription<{
-	uuid: string;
 	type: OptionType.PICK;
 	name: string;
 	required: boolean;
@@ -48,7 +46,6 @@ export interface IPickOption extends HasDescription<{
 }> {}
 
 export interface IQuantityOption extends HasDescription<{
-	uuid: string;
 	type: OptionType.QUANTITY;
 	name: string;
 	min?: number;
@@ -58,7 +55,6 @@ export interface IQuantityOption extends HasDescription<{
 }> {}
 
 export interface ITextOption extends HasDescription<{
-	uuid: string;
 	type: OptionType.TEXT;
 	name: string;
 	max?: number;
