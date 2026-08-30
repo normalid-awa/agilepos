@@ -20,4 +20,5 @@ export interface IOrder {
 	orderBy?: IUser;
 	payment: IPayment;
 	createdAt: Date;
+	updatedAt: Date;
 }

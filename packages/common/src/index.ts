@@ -5,3 +5,5 @@ export * from "./orderableItem.js";
 export * from "./orderedItem.js";
 export * from "./orderHistory.js";
 export * from "./utils.js";
+export * from "./order.js";
+export * from "./payment.js";
