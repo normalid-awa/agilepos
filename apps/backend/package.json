@@ -19,6 +19,7 @@
 	},
 	"dependencies": {
 		"@agilepos/common": "",
+		"@lubiah/better-auth-mikro-orm": "^0.0.8",
 		"@mikro-orm/cli": "^7.1.14",
 		"@mikro-orm/core": "^7.1.14",
 		"@mikro-orm/decorators": "^7.1.14",

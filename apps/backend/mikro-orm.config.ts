@@ -4,7 +4,7 @@ import { TsMorphMetadataProvider } from "@mikro-orm/reflection";
 import "dotenv/config";
 
 export default defineConfig({
-	entities: ["./dist/entities"],
+	entities: ["./dist/src/entities"],
 	entitiesTs: ["./src/entities"],
 	metadataProvider: TsMorphMetadataProvider,
 	clientUrl: process.env.PG_SQL_CONNECTION_STRING,
