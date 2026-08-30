@@ -23,7 +23,6 @@ export const TestHotChocoletteItem: IOrderableItem = {
 };
 
 export const TestDrinkOption: IPickOption = {
-	uuid: "ddfqw132t",
 	name: "Choose drink",
 	type: OptionType.PICK,
 	required: false,
@@ -85,13 +84,12 @@ const TestOrder: IOrderedItem = {
 			name: TestOptionDrinkSet.name,
 			values: [
 				{
-					uuid: "ff1h92843",
 					type: OptionType.PICK,
-					option: TestDrinkOption.uuid,
+					option: TestDrinkOption,
 					name: TestDrinkOption.name,
 					description: TestDrinkOption.description!,
 					value: {
-						type: "item",
+						type: OptionChoiceType.ITEM,
 						value: TestCokeOrder,
 						price: 6,
 					},
