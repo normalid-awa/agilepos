@@ -10,5 +10,11 @@
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
-	"type": "module"
+	"type": "module",
+	"exports": {
+		"./*": {
+			"import": "./dist/*.js",
+			"types": "./dist/*.d.ts"
+		}
+	}
 }
