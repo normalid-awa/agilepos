@@ -14,7 +14,7 @@ import { OptionChoiceType, OptionType } from "@agilepos/common";
 @Entity()
 export class OrderedItem {
 	@PrimaryKey({ type: "uuid", defaultRaw: "gen_random_uuid()" })
-	uuid!: string;
+	id!: string;
 
 	@ManyToOne()
 	item?: OrderableItem;

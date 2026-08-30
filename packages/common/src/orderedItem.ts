@@ -18,7 +18,7 @@ import type { Ref } from "./utils.js";
  * An interface represent an item that order by user
  */
 export interface IOrderedItem extends HasImages<{
-	uuid: string;
+	id: string;
 	item: IOrderableItem;
 	name: string;
 	price: number;
@@ -27,8 +27,8 @@ export interface IOrderedItem extends HasImages<{
 
 export interface IOptionSetValue extends HasDescription<
 	HasImages<{
-		uuid: string;
-		optionSet: Ref<IOptionSet, "uuid">;
+		id: string;
+		optionSet: Ref<IOptionSet, "id">;
 		name: string;
 		values: OptionValue[];
 	}>

@@ -14,7 +14,7 @@ import {
 @Entity()
 export class OrderableItem {
 	@PrimaryKey({ type: "uuid", defaultRaw: "gen_random_uuid()" })
-	uuid!: string;
+	id!: string;
 
 	@Property()
 	name!: string;
@@ -39,7 +39,7 @@ export class OrderableItem {
 @Entity()
 export class OptionSet {
 	@PrimaryKey({ type: "uuid", defaultRaw: "gen_random_uuid()" })
-	uuid!: string;
+	id!: string;
 
 	@Property()
 	name!: string;

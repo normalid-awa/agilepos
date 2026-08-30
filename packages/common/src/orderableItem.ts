@@ -6,7 +6,7 @@ import type { HasImages } from "./hasImage.js";
  */
 export interface IOrderableItem extends HasDescription<
 	HasImages<{
-		uuid: string;
+		id: string;
 		name: string;
 		price: number;
 		optionSets?: IOptionSet[];
@@ -16,7 +16,7 @@ export interface IOrderableItem extends HasDescription<
 
 export interface IOptionSet extends HasDescription<
 	HasImages<{
-		uuid: string;
+		id: string;
 		name: string;
 		options: Option[];
 	}>

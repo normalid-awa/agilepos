@@ -9,14 +9,14 @@ import {
 import type { IOrderedItem } from "./orderedItem.js";
 
 export const TestCokeItem: IOrderableItem = {
-	uuid: "2",
+	id: "2",
 	name: "Coke",
 	price: 12,
 	imagesUrl: [],
 };
 
 export const TestHotChocoletteItem: IOrderableItem = {
-	uuid: "3",
+	id: "3",
 	name: "Hot Chocolatte",
 	price: 6,
 	imagesUrl: [],
@@ -46,14 +46,14 @@ export const TestDrinkOption: IPickOption = {
 };
 
 export const TestOptionDrinkSet: IOptionSet = {
-	uuid: "1",
+	id: "1",
 	name: "Drinks",
 	options: [TestDrinkOption],
 	imagesUrl: [],
 };
 
 export const TestEggFriedRiceItem: IOrderableItem = {
-	uuid: "1",
+	id: "1",
 	name: "Egg Fried Rice",
 	description: "With egg",
 	price: 60,
@@ -62,7 +62,7 @@ export const TestEggFriedRiceItem: IOrderableItem = {
 } as const;
 
 const TestCokeOrder: IOrderedItem = {
-	uuid: "cvwef2341",
+	id: "cvwef2341",
 	item: TestCokeItem,
 	name: "Coke",
 	imagesUrl: [],
@@ -71,7 +71,7 @@ const TestCokeOrder: IOrderedItem = {
 };
 
 const TestOrder: IOrderedItem = {
-	uuid: "14e2d23f",
+	id: "14e2d23f",
 	item: TestEggFriedRiceItem,
 	name: TestEggFriedRiceItem.name,
 	price: TestEggFriedRiceItem.price,
@@ -79,8 +79,8 @@ const TestOrder: IOrderedItem = {
 	optionSetsValue: [
 		{
 			imagesUrl: [],
-			uuid: "c2weojij1j90",
-			optionSet: TestOptionDrinkSet.uuid,
+			id: "c2weojij1j90",
+			optionSet: TestOptionDrinkSet.id,
 			name: TestOptionDrinkSet.name,
 			values: [
 				{

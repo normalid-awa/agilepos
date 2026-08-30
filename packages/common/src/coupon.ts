@@ -6,7 +6,7 @@ import type { IOrderableItem } from "./orderableItem.js";
 
 export interface ICoupon extends HasImages<
 	HasDescription<{
-		uuid: string;
+		id: string;
 		name: string;
 		maximumUse: number;
 		expirationDate: Date;
@@ -17,7 +17,7 @@ export interface ICoupon extends HasImages<
 
 export interface IUsedCoupon extends HasImages<
 	HasDescription<{
-		uuid: string;
+		id: string;
 		name: string;
 		properties: CouponProperty[];
 	}>
