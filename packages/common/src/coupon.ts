@@ -10,7 +10,7 @@ export interface ICoupon extends HasImages<
 		name: string;
 		maximumUse: number;
 		expirationDate: Date;
-		useCondition: CouponCondition[];
+		useRestriction: CouponRestriction[];
 		properties: CouponProperty[];
 	}>
 > {}
@@ -23,47 +23,37 @@ export interface IUsedCoupon extends HasImages<
 	}>
 > {}
 
+export enum CouponPropertyType {
+	DISCOUNT_PRECENTAGE = "discount-precentage",
+	DISCOUNT = "discount",
+	GIFT = "gift",
+}
+
 export type CouponProperty =
 	| {
-			type: "discount-precentage";
+			type: CouponPropertyType.DISCOUNT_PRECENTAGE;
 			precentage: number;
 	  }
 	| {
-			type: "discount";
+			type: CouponPropertyType.DISCOUNT;
 			discount: number;
 	  }
 	| {
-			type: "gift";
+			type: CouponPropertyType.GIFT;
 			item: IOrderableItem;
-	  }
-	| {
-			/**
-			 * Could not use with any coupon
-			 */
-			type: "exclusive";
-	  }
-	| {
-			/**
-			 * Could not use with certain coupon
-			 */
-			type: "coupon-conflict";
-			exclusive: ICoupon[];
-	  }
-	| {
-			/**
-			 * Could not use with certain coupon
-			 */
-			type: "coupon-conflict";
-			exclusive: ICoupon[];
-	  }
-	| {
-			type: "could-accumulate";
-			maxAccumulate: number;
 	  };
 
-export type CouponCondition =
+export enum CouponRestrictionType {
+	COMBINATION = "item-combination",
+	MINIMUM_PRICE = "minimum-price",
+	CONFLICT = "conflict",
+	EXCLUSIVE = "exclusive",
+	ACCUMULABLE = "accumulable",
+}
+
+export type CouponRestriction =
 	| {
-			type: "item-combination";
+			type: CouponRestrictionType.COMBINATION;
 			/**
 			 *  e.g.  [[a,b], c] = (a or b) and c
 			 *  e.g.  [[a,b]] = a or b
@@ -72,6 +62,23 @@ export type CouponCondition =
 			conditions: (IOrderableItem | IOrderableItem[])[];
 	  }
 	| {
-			type: "minimum-price";
+			type: CouponRestrictionType.MINIMUM_PRICE;
 			price: number;
+	  }
+	| {
+			/**
+			 * Could not use with certain coupon
+			 */
+			type: CouponRestrictionType.CONFLICT;
+			exclusive: ICoupon[];
+	  }
+	| {
+			/**
+			 * Could not use with any coupon
+			 */
+			type: CouponRestrictionType.EXCLUSIVE;
+	  }
+	| {
+			type: CouponRestrictionType.ACCUMULABLE;
+			maxAccumulate: number;
 	  };
